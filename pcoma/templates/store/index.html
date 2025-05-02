@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block header %}
+<h1>{% block title %}Products{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}  
+  {% for product in products %}
+    <div class="product">
+      <img src="static/{{ product["image"] }}">
+      <h3>{{ product["brand"] }} {{ product["name"] }}</h3>
+      <h3>{{ product["price"] }}€</h3>
+      <p class="description"> {{ product["description"] }}</p>
+    </div>
+  {% endfor %}
+
+{% endblock %}

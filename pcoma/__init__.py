@@ -1,5 +1,5 @@
 import os
-from flask import Flask, url_for, request, render_template
+from flask import Flask, url_for, request, render_template, redirect
 
 def create_app():
 
@@ -18,9 +18,9 @@ def create_app():
     db.init_app(app)
 
 
-    @app.route("/")
-    def index():
-        return "<h1>PADELCOMA</h1>"
+    #@app.route("/")
+    #def index():
+        #return render_template("store/index.html")  
 
     @app.route("/login", methods=["POST", "GET"])
     def login():
@@ -31,16 +31,13 @@ def create_app():
 
     def do_the_login():
         return "login data"
-
-    def show_the_login_form():
-        return "<content>LOGIN HTML FORM</content>"
-
-    @app.route("/user/<int:user_id>")
-    def user(user_id):
-        return f"<p>ID: {user_id}</p>"
-
+    
     from . import auth
     app.register_blueprint(auth.bp)
+
+    from . import store
+    app.register_blueprint(store.bp)
+    app.add_url_rule("/", endpoint="index")
 
     return app
 

@@ -1,4 +1,33 @@
-body{
-  color : red;
-  font-size: 24px;
+nav{
+  text-align: start;
+}
+
+.product {
+  text-align: center;
+}
+
+header{
+  text-align: center;
+}
+
+img{
+  width: 250px;
+  height: 250px;
+  background-color: #f0f0f0;
+}
+
+.content{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+}
+
+div.flash{
+  text-align: center;
+  font-size: 20px;
+  color: red;
+}
+
+form{
+  text-align: center;
 }
