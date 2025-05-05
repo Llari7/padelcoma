@@ -1,13 +1,24 @@
 {% extends "base.html" %}
 
+{% block title %}Tienda{% endblock %}
+
 {% block header %}
-<h1>{% block title %}Products{% endblock %}</h1>
+<ul class="store-menu">
+  <li>
+    <a href=""><span id="palas">Palas de pádel</span></a>
+  <li>
+    <a href=""><span id="zapatillas">Zapatillas de pádel</span></a>
+  <li>
+    <a href=""><span id="ropa">Ropa de pádel</span></a>
+  <li>
+    <a href=""><span id="accesorios">Accesorios</span></a>
+</ul>
 {% endblock %}
 
 {% block content %}  
   {% for product in products %}
     <div class="product">
-      <img src="static/{{ product["image"] }}">
+      <img class="product-img" src="static/{{ product["image"] }}" alt="{{ product['name'] }}">
       <h3>{{ product["brand"] }} {{ product["name"] }}</h3>
       <h3>{{ product["price"] }}€</h3>
       <p class="description"> {{ product["description"] }}</p>

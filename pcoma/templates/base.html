@@ -1,15 +1,21 @@
 <!DOCTYPE html>
-<title> {% block title %}{% endblock %} - PADELCOMA </title>
+<html>
 <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+<link rel="apple-touch-icon" sizes="180x180" href="../static/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="../static/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="../static/favicon-16x16.png">
+<link rel="manifest" href="../static/site.webmanifest">
+
+<title> {% block title %}{% endblock %} - PADELCOMA </title>
 <nav>
-  <h1>PADELCOMA</h1>
-  <ul>
+<a href="{{url_for('store.index')}}"><img class="logo" src="../static/logo-padelcoma.png" alt="logo-padelcoma.png"/></a>
+  <ul class= "acc-menu">
     {% if g.user %}
       <li><span>{{ g.user["username"] }}</span>
       <li><a href="{{ url_for('auth.logout') }}">Log Out</a>
     {% else %}
-      <li><a href="{{ url_for('auth.register') }}">Register</a>
-      <li><a href="{{ url_for('auth.login') }}">Login</a>
+      <li><a class="register" href="{{ url_for('auth.register') }}">Register</a>
+      <li><a class="login" href="{{ url_for('auth.login') }}">Login</a>
     {% endif %}
   </ul>
 </nav>
@@ -20,6 +26,8 @@
   {% for message in get_flashed_messages() %}
     <div class="flash">{{message}}</div>
   {% endfor %}
+    <div class="products">
   {% block content %}{% endblock %}
+    </div>
 </section>
-
+</html>
